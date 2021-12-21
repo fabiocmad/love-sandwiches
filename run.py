@@ -21,6 +21,22 @@ def get_sales_data():
     print("Example: 10, 20, 30, 40, 50, 60\n")
 
     data_str = input("Enter your data here: ")
-    print(f"The data provided is {data_str}")
+    
+    sales_data = data_str.split(",") # Split returns the broken up values as a list, this case will remove the commas from the string
+    validate_data(sales_data)
+
+def validate_data(values):
+    """
+    Inside the try, convert all string values into integers.
+    Raises Error if string cannot be converted into int,
+    or if there are not exactly 6 values.
+    """
+    try:
+        if len(values) != 6:
+            raise ValueError(
+                f"6 values required, you entered {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.")
 
 get_sales_data()
